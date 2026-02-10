@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AERO</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800;900&display=swap');
+
+        /* --- VARIABLES --- */
+        :root {
+            --bg-color: #f0faff;
+            --cyan: #00e5ff;
+            --yellow: #ffeb3b;
+            --dark: #333;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+            
+            /* GRID BACKGROUND */
+            background-image: 
+                linear-gradient(rgba(0, 229, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 229, 255, 0.1) 1px, transparent 1px);
+            background-size: 80px 80px;
+            background-position: center top;
+        }
+
+        /* --- LOGO (TOP LEFT) --- */
+        .logo-top-left {
+            position: absolute;
+            top: 30px; left: 50px;
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: -2px;
+            z-index: 10;
+        }
+        .text-yellow { color: #ffca28; }
+        .text-blue { color: var(--cyan); }
+
+        /* --- YELLOW ACCENT LINE (Under Logo) --- */
+        .accent-line {
+            position: absolute;
+            top: 80px; left: 50px;
+            width: 80px; height: 4px;
+            background-color: var(--yellow);
+        }
+        .vertical-line {
+            position: absolute;
+            top: 30px; left: 40px;
+            width: 4px; height: 50px;
+            background-color: var(--yellow);
+            opacity: 0.3;
+        }
+
+        /* --- NAV BAR (TOP RIGHT) --- */
+        nav {
+            position: absolute;
+            top: 40px; right: 50px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            font-weight: 700;
+            color: #0097a7;
+        }
+        nav a { text-decoration: none; color: inherit; transition: 0.2s; }
+        nav a:hover { color: var(--cyan); }
+        
+        .profile-icon {
+            font-size: 1.5rem;
+            color: #555;
+            border: 2px solid var(--cyan);
+            border-radius: 50%;
+            width: 40px; height: 40px;
+            display: flex; justify-content: center; align-items: center;
+            cursor: pointer;
+        }
+
+        /* --- CENTER CONTENT --- */
+        .main-content {
+            margin-top: 15vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* PLANE ICON (CENTER) */
+        .plane-icon {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 20px;
+        }
+        .plane-svg {
+            width: 100%;
+            height: 100%;
+            fill: var(--cyan);
+            filter: drop-shadow(-8px 8px 0px var(--yellow));
+            transform: rotate(-10deg);
+        }
+
+        /* --- SEARCH BAR --- */
+        .search-wrapper {
+            position: relative;
+            width: 600px;
+            height: 60px;
+            background: white;
+            border: 2px solid var(--cyan);
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            box-shadow: 0 10px 30px rgba(0, 229, 255, 0.15);
+            transition: 0.3s;
+        }
+        .search-wrapper:hover { transform: scale(1.02); }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 1.1rem;
+            font-family: 'Montserrat';
+            color: #555;
+            background: transparent;
+            padding-left: 25px;
+        }
+
+        .connect-btn {
+            background-color: var(--yellow);
+            color: black;
+            font-weight: 800;
+            border: none;
+            border-radius: 50px;
+            height: 100%;
+            padding: 0 40px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .connect-btn:hover { background-color: #ffd600; }
+
+        /* --- GAMES GRID --- */
+        .games-container {
+            margin-top: 60px;
+            display: flex;
+            gap: 25px;
+        }
+
+        .game-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            width: 150px;
+            transition: 0.3s;
+        }
+        .game-card:hover { transform: translateY(-5px); }
+
+        .game-img-box {
+            width: 100%;
+            height: 90px;
+            background: black;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            position: relative;
+        }
+        
+        .game-card:hover .game-img-box {
+            border-color: var(--cyan);
+            box-shadow: 0 0 15px var(--cyan);
+        }
+
+        .game-img-box img { width: 100%; height: 100%; object-fit: cover; }
+
+        .game-title {
+            margin-top: 10px;
+            font-weight: 700;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="logo-top-left">
+        <span class="text-yellow">AE</span><span class="text-blue">RO</span>
+    </div>
+    <div class="accent-line"></div>
+    <div class="vertical-line"></div>
+
+    <nav>
+        <a href="#">Games</a>
+        <a href="#">Proxy</a>
+        <a href="#">Settings</a>
+        <div class="profile-icon">👤</div>
+    </nav>
+
+    <div class="main-content">
+        
+        <div class="plane-icon">
+            <svg class="plane-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+            </svg>
+        </div>
+
+        <div class="search-wrapper">
+            <input type="text" class="search-input" placeholder="Enter URL to Browse">
+            <button class="connect-btn">Connect</button>
+        </div>
+
+        <div class="games-container">
+            <div class="game-card">
+                <div class="game-img-box">
+                    <img src="https://cdn.icon-icons.com/icons2/2699/PNG/512/clash_royale_logo_icon_169644.png" alt="Clash">
+                </div>
+                <span class="game-title">Clash Royale</span>
+            </div>
+            <div class="game-card">
+                <div class="game-img-box">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Roblox_player_icon_black.svg/1200px-Roblox_player_icon_black.svg.png" alt="Roblox">
+                </div>
+                <span class="game-title">Roblox</span>
+            </div>
+            <div class="game-card">
+                <div class="game-img-box">
+                    <img src="https://cdn2.unrealengine.com/fortnite-chapter-3-season-4-logo-400x400-4859ca780282.jpg" alt="Fortnite">
+                </div>
+                <span class="game-title">Fortnite</span>
+            </div>
+            <div class="game-card">
+                <div class="game-img-box">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/83/Five_Nights_at_Freddy%27s_icon.png/220px-Five_Nights_at_Freddy%27s_icon.png" alt="FNAF">
+                </div>
+                <span class="game-title">FNAF</span>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
